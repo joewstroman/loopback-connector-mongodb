@@ -139,8 +139,8 @@ describe('ObjectID', function() {
       const found = await Article.find({where: {title: 'arrayOfObjectID'}});
       // the type of the returned array is actually string even it's stored as ObjectIds in the db as expected
       found[0].xidArr.should.containDeep([
-        new ds.ObjectID(objectIDLikeString),
-        new ds.ObjectID(objectIDLikeString2),
+        objectIDLikeString,
+        objectIDLikeString2,
       ]);
       // check if the array is stored in ObjectId
       const raw = await findRawModelDataAsync('ArticleC', found[0].id);

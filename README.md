@@ -14,6 +14,17 @@ This installs the module from npm and adds it as a dependency to the application
 
 If you create a MongoDB data source using the data source generator as described below, you don't have to do this, since the generator will run `npm install` for you.
 
+## Supported versions
+
+**Starting from the version 6.0.0, this connector is no longer compatible with LoopBack 3. Please use the latest 5.x version in your LoopBack 3 applications.**
+
+This module adopts the [Module Long Term Support (LTS)](http://github.com/CloudNativeJS/ModuleLTS) policy, with the following End Of Life (EOL) dates:
+
+| Version    | Status          | Published | EOL                  | LoopBack | Juggler  |
+| ---------- | --------------- | --------- | -------------------- | ---------|----------|
+| 6.x        | Current         | Nov 2020  | Apr 2023 _(minimum)_ | 4        | 4.x      |
+| 5.x        | Active LTS      | Jun 2019  | Aug 2021             | 3, 4     | 3.x, 4.x |
+
 ## Creating a MongoDB data source
 
 For LoopBack 4 users, use the LB4 [Command-line interface](https://loopback.io/doc/en/lb4/Command-line-interface.html) to generate a DataSource with MongoDB connector to your LB4 application. Run [`lb4 datasource`](https://loopback.io/doc/en/lb4/DataSource-generator.html), it will prompt for configurations such as host, post, etc. that are required to connect to a MongoDB database.
@@ -32,32 +43,6 @@ const config = {
   database: 'testdb',
 };
 ```
-
-<details><summary markdown="span"><strong>For LoopBack 3 users</strong></summary>
-
-Use the [Data source generator](http://loopback.io/doc/en/lb3/Data-source-generator.html) to add a MongoDB data source to your application.
-The generator will prompt for the database server hostname, port, and other settings
-required to connect to a MongoDB database. It will also run the `npm install` command above for you.
-
-The entry in the application's `/server/datasources.json` will look like this:
-
-```javascript
-"mydb": {
-  "host": "myserver",
-  "port": 27017,
-  "url":  "",
-  "database": "test",
-  "password": "mypassword",
-  "name": "mydb",
-  "user": "me",
-  "authSource" : "admin",
-  "connector": "mongodb"
-}
-```
-
-Edit `datasources.json` to add any other additional properties that you require.
-
-</details>
 
 If your username or password contains special characters like `@`, `$` etc, encode the whole
 username or password using [encodeURIComponent](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent).
